@@ -38,12 +38,26 @@ extension Recipe
     {
         for ingredient in self.ingredients
         {
-            if !ingredient.product.types.contains(.Vegetarian)
+            if !ingredient.product.isVegetarian
             {
                 return false
             }
         }
         
         return true
+    }
+    
+    /// A Boolean value that determines if the recipe is alcoholic.
+    public var alcoholic: Bool
+    {
+        for ingredient in self.ingredients
+        {
+            if ingredient.product.isAlcoholic
+            {
+                return true
+            }
+        }
+        
+        return false
     }
 }

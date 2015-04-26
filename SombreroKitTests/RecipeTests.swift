@@ -18,27 +18,18 @@ class RecipeTests: XCTestCase
     {
         super.setUp()
         
-        let egg = Product(name: "egg", expires: nil, ofType: .Vegetarian, .Dairy)
-        let bacon = Product(name: "bacon", expires: nil, ofType: .Meat)
+        let egg = Product(name: "egg", expires: nil, ofType: .Vegetarian, .Dairy)!
+        let bacon = Product(name: "bacon", expires: nil, ofType: .Meat)!
+        
+        let oneEgg = Ingredient(product: egg, quantity: Quantity(amount: 1.0, type: .None))
+        let twoPiecesOfBacon = Ingredient(product: bacon, quantity: Quantity(amount: 2.0, type: .None))
         
         self.boiledEgg = Recipe(
             recipes: nil,
-            ingredients: Ingredient(
-                product: egg,
-                quantity: Quantity(
-                    amount: 1, type: .None)))
+            ingredients: oneEgg)
         
         self.friedEgg = Recipe(recipes: nil,
-            ingredients: Ingredient(
-                product: egg,
-                quantity: Quantity(
-                    amount: 1,
-                    type: .None)),
-            Ingredient(
-                product: bacon,
-                quantity: Quantity(
-                    amount: 1,
-                    type: .None)))
+            ingredients: oneEgg, twoPiecesOfBacon)
     }
     
     override func tearDown()

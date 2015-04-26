@@ -30,33 +30,16 @@ public struct Ingredient
     }
 }
 
-/// Holds the quantity of the ingredient
-public struct Quantity
+// MARK: - Hashable
+extension Ingredient: Hashable
 {
-    /// The amount of the quantity.
-    public var amount: Int
-    
-    /// The type of the quantity.
-    public var type: QuantityType
-    
-    /**
-        The designated initializer.
-        
-        :param: amount The amount of the quantity.
-        :param: type The type of the quantity.
-    */
-    public init(amount: Int, type: QuantityType)
+    public var hashValue: Int
     {
-        self.amount = amount
-        self.type = type
+        return product.hashValue ^ quantity.hashValue
     }
 }
 
-/// Holds the quantity-type of the ingredient.
-public enum QuantityType
+public func ==(lhs: Ingredient, rhs: Ingredient) -> Bool
 {
-    case Weight
-    case Spoon
-    
-    case None
+    return lhs.product == rhs.product && lhs.quantity == rhs.quantity
 }

@@ -1,0 +1,66 @@
+//
+//  Quantity.swift
+//  Sombrero
+//
+//  Created by Bas Broek on 26/04/15.
+//  Copyright (c) 2015 Bas Broek. All rights reserved.
+//
+
+import Foundation
+
+/// Holds the quantity of the ingredient
+public struct Quantity
+{
+    /// The amount of the quantity.
+    public var amount: Double
+    
+    /// The type of the quantity.
+    public var type: QuantityType
+    
+    /**
+        The designated initializer.
+        
+        :param: amount The amount of the quantity.
+        :param: type The type of the quantity.
+    */
+    public init(amount: Double, type: QuantityType)
+    {
+        self.amount = amount
+        self.type = type
+    }
+}
+
+// MARK: - Hashable
+extension Quantity: Hashable
+{
+    public var hashValue: Int
+    {
+        return amount.hashValue ^ type.hashValue
+    }
+}
+
+public func ==(lhs: Quantity, rhs: Quantity) -> Bool
+{
+    return lhs.amount == rhs.amount && lhs.type == rhs.type
+}
+
+public func +=(lhs: Quantity, rhs: Quantity) -> Double
+{
+    return lhs.amount + rhs.amount
+}
+
+public func -=(lhs: Quantity, rhs: Quantity) -> Double?
+{
+    let updatedAmount = lhs.amount - rhs.amount
+    
+    return (updatedAmount) >= 0 ? updatedAmount : nil
+}
+
+/// Holds the quantity-type of the ingredient.
+public enum QuantityType
+{
+    case Weight
+    case Spoon
+    
+    case None
+}

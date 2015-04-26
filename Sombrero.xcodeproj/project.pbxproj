@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49628CC81AED720B000D2D22 /* ShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49628CC71AED720B000D2D22 /* ShoppingList.swift */; };
+		49628CCA1AED7432000D2D22 /* Fridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49628CC91AED7432000D2D22 /* Fridge.swift */; };
+		49628CCC1AED7A65000D2D22 /* Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49628CCB1AED7A65000D2D22 /* Quantity.swift */; };
+		49628CCE1AED7F62000D2D22 /* FridgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49628CCD1AED7F62000D2D22 /* FridgeTests.swift */; };
 		49E3FE4F1AED148800D7CC0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E3FE4E1AED148800D7CC0C /* AppDelegate.swift */; };
 		49E3FE511AED148800D7CC0C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E3FE501AED148800D7CC0C /* FirstViewController.swift */; };
 		49E3FE531AED148800D7CC0C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E3FE521AED148800D7CC0C /* SecondViewController.swift */; };
@@ -71,6 +75,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		49628CC71AED720B000D2D22 /* ShoppingList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingList.swift; sourceTree = "<group>"; };
+		49628CC91AED7432000D2D22 /* Fridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fridge.swift; sourceTree = "<group>"; };
+		49628CCB1AED7A65000D2D22 /* Quantity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quantity.swift; sourceTree = "<group>"; };
+		49628CCD1AED7F62000D2D22 /* FridgeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FridgeTests.swift; sourceTree = "<group>"; };
 		49E3FE491AED148800D7CC0C /* Sombrero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sombrero.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E3FE4D1AED148800D7CC0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49E3FE4E1AED148800D7CC0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -212,6 +220,7 @@
 			children = (
 				49E3FE9A1AED22E700D7CC0C /* RecipeTests.swift */,
 				49E3FE9C1AED232600D7CC0C /* ProductTests.swift */,
+				49628CCD1AED7F62000D2D22 /* FridgeTests.swift */,
 				49E3FE861AED14DD00D7CC0C /* Supporting Files */,
 			);
 			path = SombreroKitTests;
@@ -231,6 +240,9 @@
 				49E3FE961AED150A00D7CC0C /* Recipe.swift */,
 				49E3FE9E1AED33D600D7CC0C /* Ingredient.swift */,
 				49E3FE981AED153000D7CC0C /* Product.swift */,
+				49628CC71AED720B000D2D22 /* ShoppingList.swift */,
+				49628CC91AED7432000D2D22 /* Fridge.swift */,
+				49628CCB1AED7A65000D2D22 /* Quantity.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -426,7 +438,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49628CCC1AED7A65000D2D22 /* Quantity.swift in Sources */,
+				49628CCA1AED7432000D2D22 /* Fridge.swift in Sources */,
 				49E3FE971AED150A00D7CC0C /* Recipe.swift in Sources */,
+				49628CC81AED720B000D2D22 /* ShoppingList.swift in Sources */,
 				49E3FE991AED153000D7CC0C /* Product.swift in Sources */,
 				49E3FE9F1AED33D600D7CC0C /* Ingredient.swift in Sources */,
 			);
@@ -437,6 +452,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49E3FE9B1AED22E700D7CC0C /* RecipeTests.swift in Sources */,
+				49628CCE1AED7F62000D2D22 /* FridgeTests.swift in Sources */,
 				49E3FE9D1AED232600D7CC0C /* ProductTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -717,6 +733,7 @@
 				49E3FE6C1AED148800D7CC0C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		49E3FE6D1AED148800D7CC0C /* Build configuration list for PBXNativeTarget "SombreroTests" */ = {
 			isa = XCConfigurationList;
@@ -725,6 +742,7 @@
 				49E3FE6F1AED148800D7CC0C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		49E3FE8E1AED14DD00D7CC0C /* Build configuration list for PBXNativeTarget "SombreroKit" */ = {
 			isa = XCConfigurationList;
@@ -733,6 +751,7 @@
 				49E3FE901AED14DD00D7CC0C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		49E3FE921AED14DD00D7CC0C /* Build configuration list for PBXNativeTarget "SombreroKitTests" */ = {
 			isa = XCConfigurationList;
@@ -741,6 +760,7 @@
 				49E3FE941AED14DD00D7CC0C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
