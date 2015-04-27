@@ -8,6 +8,8 @@
 
 import Foundation
 
+// MARK: - Ingredient
+
 /// Holds an ingredient for a recipe.
 public struct Ingredient
 {
@@ -33,13 +35,24 @@ public struct Ingredient
 // MARK: - Hashable
 extension Ingredient: Hashable
 {
+    /// The hash value.
     public var hashValue: Int
     {
-        return product.hashValue ^ quantity.hashValue
+        return self.product.hashValue ^ self.quantity.hashValue
     }
 }
 
 public func ==(lhs: Ingredient, rhs: Ingredient) -> Bool
 {
     return lhs.product == rhs.product && lhs.quantity == rhs.quantity
+}
+
+// MARK: - Printable
+extension Ingredient: Printable
+{
+    /// A textual representation of `self`.
+    public var description: String
+    {
+        return "\(self.quantity) of \(self.product)"
+    }
 }

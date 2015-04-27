@@ -8,6 +8,9 @@
 
 import Foundation
 
+// MARK: - Fridge
+
+/// Holds a fridge.
 public class Fridge
 {
     /// The ingredients in the fridge.
@@ -36,15 +39,7 @@ public class Fridge
     */
     public func addIngredient(ingredient: Ingredient)
     {
-        // FIXME: Ingredient is broken; diff quantity now is diff ingredient.
-        if self.ingredients.contains(ingredient)
-        {
-            self.updateIngredient(ingredient)
-        }
-        else
-        {
-            self.ingredients.insert(ingredient)
-        }
+        self.updateIngredient(ingredient)
     }
     
     /**
@@ -56,15 +51,7 @@ public class Fridge
     */
     public func removeIngredient(ingredient: Ingredient) -> Bool
     {
-        // FIXME: Ingredient is broken; diff quantity now is diff ingredient.
-        if !self.ingredients.contains(ingredient)
-        {
-            return false
-        }
-        
-        self.updateIngredient(ingredient, remove: true)
-        
-        return true
+        return self.updateIngredient(ingredient, remove: true)
     }
     
     /**
@@ -76,13 +63,19 @@ public class Fridge
     */
     public func removeRecipe(recipe: Recipe) -> Bool
     {
-        // TODO: Loop through subrecipes
-        
         for ingredient in recipe.ingredients
         {
             if !self.removeIngredient(ingredient)
             {
                 return false
+            }
+        }
+        
+        if let subRecipes = recipe.recipes
+        {
+            for recipe in subRecipes
+            {
+                self.removeRecipe(recipe)
             }
         }
         
@@ -94,13 +87,34 @@ public class Fridge
     */
     public func emptyFridge()
     {
-        self.ingredients = Set()
+        self.ingredients.removeAll()
+    }
+    
+    /**
+        Checks if the ingredient is in the fridge.
+    
+        :param: ingredient The ingredient to check for.
+    
+        :returns: True if the ingredient was found, otherwise false.
+    */
+    public func containsIngredient(ingredient: Ingredient) -> Bool
+    {
+        for ing in self.ingredients
+        {
+            if ing == ingredient
+            {
+                return true
+            }
+        }
+        
+        return false
     }
     
     /**
         Updates the ingredient in the fridge.
     
         :param: ingredient The ingredient to update.
+        :param: remove True if the object should be removed, false if not.
     
         :returns: True if the ingredient has been successfully updated, otherwise false.
     */
@@ -108,13 +122,20 @@ public class Fridge
     {
         var updateIngredient: Ingredient?
         
-        for availableIngredient in self.ingredients
+        if remove
         {
-            if ingredient == availableIngredient
+            updateIngredient = ingredient
+        }
+        else
+        {
+            for availableIngredient in self.ingredients
             {
-                updateIngredient = availableIngredient
-                
-                break
+                if ingredient == availableIngredient
+                {
+                    updateIngredient = availableIngredient
+                    
+                    break
+                }
             }
         }
         
@@ -132,7 +153,9 @@ public class Fridge
                 }
                 else if updatedQuantity == 0.0
                 {
-                    self.ingredients.remove(updateIngredient)
+                    let tes = self.ingredients.remove(updateIngredient)
+                    
+                    println(tes)
                     
                     return true
                 }
@@ -149,12 +172,16 @@ public class Fridge
             return true
         }
         
-        return false
+        self.ingredients.insert(ingredient)
+        
+        return true
     }
 }
 
+// MARK: - Fridge extension
 extension Fridge
 {
+    /// A Boolean value that determines if the fridge is empty.
     public var isEmpty: Bool
     {
         return self.ingredients.isEmpty

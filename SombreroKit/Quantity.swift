@@ -8,6 +8,8 @@
 
 import Foundation
 
+// MARK: - Quantity
+
 /// Holds the quantity of the ingredient
 public struct Quantity
 {
@@ -33,6 +35,7 @@ public struct Quantity
 // MARK: - Hashable
 extension Quantity: Hashable
 {
+    /// The hash value.
     public var hashValue: Int
     {
         return amount.hashValue ^ type.hashValue
@@ -56,11 +59,33 @@ public func -=(lhs: Quantity, rhs: Quantity) -> Double?
     return (updatedAmount) >= 0 ? updatedAmount : nil
 }
 
-/// Holds the quantity-type of the ingredient.
-public enum QuantityType
+// MARK: - Printable
+extension Quantity: Printable
 {
-    case Weight
-    case Spoon
+    /// A textual representation of `self`.
+    public var description: String
+    {
+        return " ".join(["\(self.amount)", "\(self.type)"])
+    }
+}
+
+// MARK: - QuantityType
+
+/// Holds the quantity-type of the ingredient.
+public enum QuantityType: String
+{
+    case Weight = "Weight"
+    case Spoon = "Spoon"
     
-    case None
+    case None = ""
+}
+
+// MARK: - Printable
+extension QuantityType: Printable
+{
+    /// A textual representation of `self`.
+    public var description: String
+    {
+        return self.rawValue
+    }
 }

@@ -67,147 +67,264 @@ class ProductTests: XCTestCase
     
     func testInvalid()
     {
-        XCTAssertNil(self.invalidProduct1, "")
-        XCTAssertNil(self.invalidProduct2, "")
-        XCTAssertNil(self.invalidProduct3, "")
-        XCTAssertNil(self.invalidProduct4, "")
+        XCTAssertNil(self.invalidProduct1,
+            "The product \(self.invalidProduct1) was unexpectedly not nil")
+        XCTAssertNil(self.invalidProduct2,
+            "The product \(self.invalidProduct2) was unexpectedly not nil")
+        XCTAssertNil(self.invalidProduct3,
+            "The product \(self.invalidProduct3) was unexpectedly not nil")
+        XCTAssertNil(self.invalidProduct4,
+            "The product \(self.invalidProduct4) was unexpectedly not nil")
         
-        XCTAssertNotNil(self.validProduct1, "")
+        XCTAssertNotNil(self.validProduct1,
+            "The product \(self.validProduct1) was unexpectedly nil")
     }
     
     func testUnknown()
     {
-        XCTAssertTrue(self.unknownProduct.types.contains(.Unknown), "")
-        XCTAssertFalse(self.apple.types.contains(.Unknown), "")
-        XCTAssertFalse(self.steak.types.contains(.Unknown), "")
-        XCTAssertFalse(self.egg.types.contains(.Unknown), "")
-        XCTAssertFalse(self.cheese.types.contains(.Unknown), "")
-        XCTAssertFalse(self.garlic.types.contains(.Unknown), "")
-        XCTAssertFalse(self.milk.types.contains(.Unknown), "")
-        XCTAssertFalse(self.chicken.types.contains(.Unknown), "")
-        XCTAssertFalse(self.honey.types.contains(.Unknown), "")
-        XCTAssertFalse(self.coke.types.contains(.Unknown), "")
-        XCTAssertFalse(self.pineapple.types.contains(.Unknown), "")
-        XCTAssertFalse(self.salmon.types.contains(.Unknown), "")
-        XCTAssertFalse(self.peas.types.contains(.Unknown), "")
+        XCTAssertTrue(self.unknownProduct.types.contains(.Unknown),
+            "The product \(self.unknownProduct) unexpectedly not contained the type \(ProductType.Unknown)")
+        
+        XCTAssertFalse(self.apple.types.contains(.Unknown),
+            "The product \(self.apple) unexpectedly contained the type \(ProductType.Unknown)")
+        XCTAssertFalse(self.steak.types.contains(.Unknown),
+            "The product \(self.steak) unexpectedly contained the type \(ProductType.Unknown)")
+        XCTAssertFalse(self.egg.types.contains(.Unknown),
+            "The product \(self.egg) unexpectedly contained the type \(ProductType.Unknown)")
+        XCTAssertFalse(self.cheese.types.contains(.Unknown),
+            "The product \(self.cheese) unexpectedly contained the type \(ProductType.Unknown)")
+        XCTAssertFalse(self.garlic.types.contains(.Unknown),
+            "The product \(self.garlic) unexpectedly contained the type \(ProductType.Unknown)")
+        XCTAssertFalse(self.milk.types.contains(.Unknown),
+            "The product \(self.milk) unexpectedly contained the type \(ProductType.Unknown)")
+        XCTAssertFalse(self.chicken.types.contains(.Unknown),
+            "The product \(self.chicken) unexpectedly contained the type \(ProductType.Unknown)")
+        XCTAssertFalse(self.honey.types.contains(.Unknown),
+            "The product \(self.honey) unexpectedly contained the type \(ProductType.Unknown)")
+        XCTAssertFalse(self.coke.types.contains(.Unknown),
+            "The product \(self.coke) unexpectedly contained the type \(ProductType.Unknown)")
+        XCTAssertFalse(self.pineapple.types.contains(.Unknown),
+            "The product \(self.pineapple) unexpectedly contained the type \(ProductType.Unknown)")
+        XCTAssertFalse(self.salmon.types.contains(.Unknown),
+            "The product \(self.salmon) unexpectedly contained the type \(ProductType.Unknown)")
+        XCTAssertFalse(self.peas.types.contains(.Unknown),
+        "The product \(self.peas) unexpectedly contained the type \(ProductType.Unknown)")
     }
     
     func testVegetarian()
     {
-        XCTAssertFalse(self.unknownProduct.isVegetarian, "")
-        XCTAssertTrue(self.apple.isVegetarian, "")
-        XCTAssertFalse(self.steak.isVegetarian, "")
-        XCTAssertTrue(self.egg.isVegetarian, "")
-        XCTAssertTrue(self.cheese.isVegetarian, "")
-        XCTAssertTrue(self.garlic.isVegetarian, "")
-        XCTAssertTrue(self.milk.isVegetarian, "")
-        XCTAssertFalse(self.chicken.isVegetarian, "")
-        XCTAssertTrue(self.honey.isVegetarian, "")
-        XCTAssertTrue(self.coke.isVegetarian, "")
-        XCTAssertTrue(self.pineapple.isVegetarian, "")
-        XCTAssertFalse(self.salmon.isVegetarian, "")
-        XCTAssertTrue(self.peas.isVegetarian, "")
+        XCTAssertTrue(self.apple.isVegetarian,
+            "The product \(self.apple) was unexpectedly not \(ProductType.Vegetarian)")
+        XCTAssertTrue(self.egg.isVegetarian,
+            "The product \(self.egg) was unexpectedly not \(ProductType.Vegetarian)")
+        XCTAssertTrue(self.cheese.isVegetarian,
+            "The product \(self.cheese) was unexpectedly not \(ProductType.Vegetarian)")
+        XCTAssertTrue(self.garlic.isVegetarian,
+            "The product \(self.garlic) was unexpectedly not \(ProductType.Vegetarian)")
+        XCTAssertTrue(self.milk.isVegetarian,
+            "The product \(self.milk) was unexpectedly not \(ProductType.Vegetarian)")
+        XCTAssertTrue(self.honey.isVegetarian,
+            "The product \(self.honey) was unexpectedly not \(ProductType.Vegetarian)")
+        XCTAssertTrue(self.coke.isVegetarian,
+            "The product \(self.coke) was unexpectedly not \(ProductType.Vegetarian)")
+        XCTAssertTrue(self.pineapple.isVegetarian,
+            "The product \(self.pineapple) was unexpectedly not \(ProductType.Vegetarian)")
+        XCTAssertTrue(self.peas.isVegetarian,
+            "The product \(self.peas) was unexpectedly not \(ProductType.Vegetarian)")
+        
+        XCTAssertFalse(self.unknownProduct.isVegetarian,
+            "The product \(self.unknownProduct) was unexpectedly \(ProductType.Vegetarian)")
+        XCTAssertFalse(self.steak.isVegetarian,
+            "The product \(self.steak) was unexpectedly \(ProductType.Vegetarian)")
+        XCTAssertFalse(self.chicken.isVegetarian,
+            "The product \(self.chicken) was unexpectedly \(ProductType.Vegetarian)")
+        XCTAssertFalse(self.salmon.isVegetarian,
+            "The product \(self.salmon) was unexpectedly \(ProductType.Vegetarian)")
     }
     
     func testMeat()
     {
-        XCTAssertFalse(self.unknownProduct.isMeat, "")
-        XCTAssertFalse(self.apple.isMeat, "")
-        XCTAssertTrue(self.steak.isMeat, "")
-        XCTAssertFalse(self.egg.isMeat, "")
-        XCTAssertFalse(self.cheese.isMeat, "")
-        XCTAssertFalse(self.garlic.isMeat, "")
-        XCTAssertFalse(self.milk.isMeat, "")
-        XCTAssertTrue(self.chicken.isMeat, "")
-        XCTAssertFalse(self.honey.isMeat, "")
-        XCTAssertFalse(self.coke.isMeat, "")
-        XCTAssertFalse(self.pineapple.isMeat, "")
-        XCTAssertFalse(self.salmon.isMeat, "")
-        XCTAssertFalse(self.peas.isMeat, "")
+        XCTAssertTrue(self.steak.isMeat,
+            "The product \(self.steak) was unexpectedly not \(ProductType.Meat)")
+        XCTAssertTrue(self.chicken.isMeat,
+            "The product \(self.chicken) was unexpectedly not \(ProductType.Meat)")
+        
+        XCTAssertFalse(self.unknownProduct.isMeat,
+            "The product \(self.unknownProduct) was unexpectedly \(ProductType.Meat)")
+        XCTAssertFalse(self.apple.isMeat,
+            "The product \(self.apple) was unexpectedly \(ProductType.Meat)")
+        XCTAssertFalse(self.egg.isMeat,
+            "The product \(self.egg) was unexpectedly \(ProductType.Meat)")
+        XCTAssertFalse(self.cheese.isMeat,
+            "The product \(self.cheese) was unexpectedly \(ProductType.Meat)")
+        XCTAssertFalse(self.garlic.isMeat,
+            "The product \(self.garlic) was unexpectedly \(ProductType.Meat)")
+        XCTAssertFalse(self.milk.isMeat,
+            "The product \(self.milk) was unexpectedly \(ProductType.Meat)")
+        XCTAssertFalse(self.honey.isMeat,
+            "The product \(self.honey) was unexpectedly \(ProductType.Meat)")
+        XCTAssertFalse(self.coke.isMeat,
+            "The product \(self.coke) was unexpectedly \(ProductType.Meat)")
+        XCTAssertFalse(self.pineapple.isMeat,
+            "The product \(self.pineapple) was unexpectedly \(ProductType.Meat)")
+        XCTAssertFalse(self.salmon.isMeat,
+            "The product \(self.salmon) was unexpectedly \(ProductType.Meat)")
+        XCTAssertFalse(self.peas.isMeat,
+            "The product \(self.peas) was unexpectedly \(ProductType.Meat)")
     }
     
     func testFish()
     {
-        XCTAssertFalse(self.unknownProduct.isFish, "")
-        XCTAssertFalse(self.apple.isFish, "")
-        XCTAssertFalse(self.steak.isFish, "")
-        XCTAssertFalse(self.egg.isFish, "")
-        XCTAssertFalse(self.cheese.isFish, "")
-        XCTAssertFalse(self.garlic.isFish, "")
-        XCTAssertFalse(self.milk.isFish, "")
-        XCTAssertFalse(self.chicken.isFish, "")
-        XCTAssertFalse(self.honey.isFish, "")
-        XCTAssertFalse(self.coke.isFish, "")
-        XCTAssertFalse(self.pineapple.isFish, "")
-        XCTAssertTrue(self.salmon.isFish, "")
-        XCTAssertFalse(self.peas.isFish, "")
+        XCTAssertTrue(self.salmon.isFish,
+            "The product \(self.salmon) was unexpectedly not \(ProductType.Fish)")
+        
+        XCTAssertFalse(self.unknownProduct.isFish,
+            "The product \(self.unknownProduct) was unexpectedly \(ProductType.Fish)")
+        XCTAssertFalse(self.apple.isFish,
+            "The product \(self.apple) was unexpectedly \(ProductType.Fish)")
+        XCTAssertFalse(self.steak.isFish,
+            "The product \(self.steak) was unexpectedly \(ProductType.Fish)")
+        XCTAssertFalse(self.egg.isFish,
+            "The product \(self.egg) was unexpectedly \(ProductType.Fish)")
+        XCTAssertFalse(self.cheese.isFish,
+            "The product \(self.cheese) was unexpectedly \(ProductType.Fish)")
+        XCTAssertFalse(self.garlic.isFish,
+            "The product \(self.garlic) was unexpectedly \(ProductType.Fish)")
+        XCTAssertFalse(self.milk.isFish,
+            "The product \(self.milk) was unexpectedly \(ProductType.Fish)")
+        XCTAssertFalse(self.chicken.isFish,
+            "The product \(self.chicken) was unexpectedly \(ProductType.Fish)")
+        XCTAssertFalse(self.honey.isFish,
+            "The product \(self.honey) was unexpectedly \(ProductType.Fish)")
+        XCTAssertFalse(self.coke.isFish,
+            "The product \(self.coke) was unexpectedly \(ProductType.Fish)")
+        XCTAssertFalse(self.pineapple.isFish,
+            "The product \(self.pineapple) was unexpectedly \(ProductType.Fish)")
+        XCTAssertFalse(self.peas.isFish,
+            "The product \(self.peas) was unexpectedly \(ProductType.Fish)")
     }
     
     func testDairy()
     {
-        XCTAssertFalse(self.unknownProduct.isDairy, "")
-        XCTAssertFalse(self.apple.isDairy, "")
-        XCTAssertFalse(self.steak.isDairy, "")
-        XCTAssertTrue(self.egg.isDairy, "")
-        XCTAssertTrue(self.cheese.isDairy, "")
-        XCTAssertFalse(self.garlic.isDairy, "")
-        XCTAssertTrue(self.milk.isDairy, "")
-        XCTAssertFalse(self.chicken.isDairy, "")
-        XCTAssertFalse(self.honey.isDairy, "")
-        XCTAssertFalse(self.coke.isDairy, "")
-        XCTAssertFalse(self.pineapple.isDairy, "")
-        XCTAssertFalse(self.salmon.isDairy, "")
-        XCTAssertFalse(self.peas.isDairy, "")
+        XCTAssertTrue(self.egg.isDairy,
+            "The product \(self.egg) was unexpectedly not \(ProductType.Dairy)")
+        XCTAssertTrue(self.cheese.isDairy,
+            "The product \(self.cheese) was unexpectedly not \(ProductType.Dairy)")
+        XCTAssertTrue(self.milk.isDairy,
+            "The product \(self.milk) was unexpectedly not \(ProductType.Dairy)")
+        
+        XCTAssertFalse(self.unknownProduct.isDairy,
+            "The product \(self.unknownProduct) was unexpectedly \(ProductType.Dairy)")
+        XCTAssertFalse(self.apple.isDairy,
+            "The product \(self.apple) was unexpectedly \(ProductType.Dairy)")
+        XCTAssertFalse(self.steak.isDairy,
+            "The product \(self.steak) was unexpectedly \(ProductType.Dairy)")
+        XCTAssertFalse(self.garlic.isDairy,
+            "The product \(self.garlic) was unexpectedly \(ProductType.Dairy)")
+        XCTAssertFalse(self.chicken.isDairy,
+            "The product \(self.chicken) was unexpectedly \(ProductType.Dairy)")
+        XCTAssertFalse(self.honey.isDairy,
+            "The product \(self.honey) was unexpectedly \(ProductType.Dairy)")
+        XCTAssertFalse(self.coke.isDairy,
+            "The product \(self.coke) was unexpectedly \(ProductType.Dairy)")
+        XCTAssertFalse(self.pineapple.isDairy,
+            "The product \(self.pineapple) was unexpectedly \(ProductType.Dairy)")
+        XCTAssertFalse(self.salmon.isDairy,
+            "The product \(self.salmon) was unexpectedly \(ProductType.Dairy)")
+        XCTAssertFalse(self.peas.isDairy,
+            "The product \(self.peas) was unexpectedly \(ProductType.Dairy)")
     }
     
     func testFruit()
     {
-        XCTAssertFalse(self.unknownProduct.isFruit, "")
-        XCTAssertTrue(self.apple.isFruit, "")
-        XCTAssertFalse(self.steak.isFruit, "")
-        XCTAssertFalse(self.egg.isFruit, "")
-        XCTAssertFalse(self.cheese.isFruit, "")
-        XCTAssertFalse(self.garlic.isFruit, "")
-        XCTAssertFalse(self.milk.isFruit, "")
-        XCTAssertFalse(self.chicken.isFruit, "")
-        XCTAssertFalse(self.honey.isFruit, "")
-        XCTAssertFalse(self.coke.isFruit, "")
-        XCTAssertTrue(self.pineapple.isFruit, "")
-        XCTAssertFalse(self.salmon.isFruit, "")
-        XCTAssertFalse(self.peas.isFruit, "")
+        XCTAssertTrue(self.apple.isFruit,
+            "The product \(self.apple) was unexpectedly not \(ProductType.Fruit)")
+        XCTAssertTrue(self.pineapple.isFruit,
+            "The product \(self.pineapple) was unexpectedly not \(ProductType.Fruit)")
+        
+        XCTAssertFalse(self.unknownProduct.isFruit,
+            "The product \(self.unknownProduct) was unexpectedly \(ProductType.Fruit)")
+        XCTAssertFalse(self.steak.isFruit,
+            "The product \(self.steak) was unexpectedly \(ProductType.Fruit)")
+        XCTAssertFalse(self.egg.isFruit,
+            "The product \(self.egg) was unexpectedly \(ProductType.Fruit)")
+        XCTAssertFalse(self.cheese.isFruit,
+            "The product \(self.cheese) was unexpectedly \(ProductType.Fruit)")
+        XCTAssertFalse(self.garlic.isFruit,
+            "The product \(self.garlic) was unexpectedly \(ProductType.Fruit)")
+        XCTAssertFalse(self.milk.isFruit,
+            "The product \(self.milk) was unexpectedly \(ProductType.Fruit)")
+        XCTAssertFalse(self.chicken.isFruit,
+            "The product \(self.chicken) was unexpectedly \(ProductType.Fruit)")
+        XCTAssertFalse(self.honey.isFruit,
+            "The product \(self.honey) was unexpectedly \(ProductType.Fruit)")
+        XCTAssertFalse(self.coke.isFruit,
+            "The product \(self.coke) was unexpectedly \(ProductType.Fruit)")
+        XCTAssertFalse(self.salmon.isFruit,
+            "The product \(self.salmon) was unexpectedly \(ProductType.Fruit)")
+        XCTAssertFalse(self.peas.isFruit,
+            "The product \(self.peas) was unexpectedly \(ProductType.Fruit)")
     }
     
     func testVegetable()
     {
-        XCTAssertFalse(self.unknownProduct.isVegetable, "")
-        XCTAssertFalse(self.apple.isVegetable, "")
-        XCTAssertFalse(self.steak.isVegetable, "")
-        XCTAssertFalse(self.egg.isVegetable, "")
-        XCTAssertFalse(self.cheese.isVegetable, "")
-        XCTAssertFalse(self.garlic.isVegetable, "")
-        XCTAssertFalse(self.milk.isVegetable, "")
-        XCTAssertFalse(self.chicken.isVegetable, "")
-        XCTAssertFalse(self.honey.isVegetable, "")
-        XCTAssertFalse(self.coke.isVegetable, "")
-        XCTAssertFalse(self.pineapple.isVegetable, "")
-        XCTAssertFalse(self.salmon.isVegetable, "")
-        XCTAssertTrue(self.peas.isVegetable, "")
+        XCTAssertTrue(self.peas.isVegetable,
+            "The product \(self.peas) was unexpectedly not \(ProductType.Vegetable)")
+        
+        XCTAssertFalse(self.unknownProduct.isVegetable,
+            "The product \(self.unknownProduct) was unexpectedly \(ProductType.Vegetable)")
+        XCTAssertFalse(self.apple.isVegetable,
+            "The product \(self.apple) was unexpectedly \(ProductType.Vegetable)")
+        XCTAssertFalse(self.steak.isVegetable,
+            "The product \(self.steak) was unexpectedly \(ProductType.Vegetable)")
+        XCTAssertFalse(self.egg.isVegetable,
+            "The product \(self.egg) was unexpectedly \(ProductType.Vegetable)")
+        XCTAssertFalse(self.cheese.isVegetable,
+            "The product \(self.cheese) was unexpectedly \(ProductType.Vegetable)")
+        XCTAssertFalse(self.garlic.isVegetable,
+            "The product \(self.garlic) was unexpectedly \(ProductType.Vegetable)")
+        XCTAssertFalse(self.milk.isVegetable,
+            "The product \(self.milk) was unexpectedly \(ProductType.Vegetable)")
+        XCTAssertFalse(self.chicken.isVegetable,
+            "The product \(self.chicken) was unexpectedly \(ProductType.Vegetable)")
+        XCTAssertFalse(self.honey.isVegetable,
+            "The product \(self.honey) was unexpectedly \(ProductType.Vegetable)")
+        XCTAssertFalse(self.coke.isVegetable,
+            "The product \(self.coke) was unexpectedly \(ProductType.Vegetable)")
+        XCTAssertFalse(self.pineapple.isVegetable,
+            "The product \(self.pineapple) was unexpectedly \(ProductType.Vegetable)")
+        XCTAssertFalse(self.salmon.isVegetable,
+            "The product \(self.salmon) was unexpectedly \(ProductType.Vegetable)")
     }
     
-    func testDrink()
+    func testBeverage()
     {
-        XCTAssertFalse(self.unknownProduct.isBeverage, "")
-        XCTAssertFalse(self.apple.isBeverage, "")
-        XCTAssertFalse(self.steak.isBeverage, "")
-        XCTAssertFalse(self.egg.isBeverage, "")
-        XCTAssertFalse(self.cheese.isBeverage, "")
-        XCTAssertFalse(self.garlic.isBeverage, "")
-        XCTAssertTrue(self.milk.isBeverage, "")
-        XCTAssertFalse(self.chicken.isBeverage, "")
-        XCTAssertFalse(self.honey.isBeverage, "")
-        XCTAssertTrue(self.coke.isBeverage, "")
-        XCTAssertFalse(self.pineapple.isBeverage, "")
-        XCTAssertFalse(self.salmon.isBeverage, "")
-        XCTAssertFalse(self.peas.isBeverage, "")
+        XCTAssertTrue(self.milk.isBeverage,
+            "The product \(self.milk) was unexpectedly not \(ProductType.Beverage)")
+        XCTAssertTrue(self.coke.isBeverage,
+            "The product \(self.coke) was unexpectedly not \(ProductType.Beverage)")
+        
+        XCTAssertFalse(self.unknownProduct.isBeverage,
+            "The product \(self.unknownProduct) was unexpectedly \(ProductType.Beverage)")
+        XCTAssertFalse(self.apple.isBeverage,
+            "The product \(self.apple) was unexpectedly \(ProductType.Beverage)")
+        XCTAssertFalse(self.steak.isBeverage,
+            "The product \(self.steak) was unexpectedly \(ProductType.Beverage)")
+        XCTAssertFalse(self.egg.isBeverage,
+            "The product \(self.egg) was unexpectedly \(ProductType.Beverage)")
+        XCTAssertFalse(self.cheese.isBeverage,
+            "The product \(self.cheese) was unexpectedly \(ProductType.Beverage)")
+        XCTAssertFalse(self.garlic.isBeverage,
+            "The product \(self.garlic) was unexpectedly \(ProductType.Beverage)")
+        XCTAssertFalse(self.chicken.isBeverage,
+            "The product \(self.chicken) was unexpectedly \(ProductType.Beverage)")
+        XCTAssertFalse(self.honey.isBeverage,
+            "The product \(self.honey) was unexpectedly \(ProductType.Beverage)")
+        XCTAssertFalse(self.pineapple.isBeverage,
+            "The product \(self.pineapple) was unexpectedly \(ProductType.Beverage)")
+        XCTAssertFalse(self.salmon.isBeverage,
+            "The product \(self.salmon) was unexpectedly \(ProductType.Beverage)")
+        XCTAssertFalse(self.peas.isBeverage,
+            "The product \(self.peas) was unexpectedly \(ProductType.Beverage)")
     }
 }

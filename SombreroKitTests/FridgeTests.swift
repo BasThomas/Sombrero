@@ -11,6 +11,8 @@ import SombreroKit
 
 class FridgeTests: XCTestCase
 {
+    let fridge = Fridge.sharedInstance
+    
     var oneEgg: Ingredient!
     var onePieceOfBacon: Ingredient!
     var twoPiecesOfBacon: Ingredient!
@@ -34,42 +36,83 @@ class FridgeTests: XCTestCase
         super.tearDown()
     }
     
+    /*
     func testFridge()
     {
-        XCTAssertTrue(Fridge.sharedInstance.isEmpty, "")
+        self.fridge.emptyFridge()
         
-        Fridge.sharedInstance.addIngredient(self.oneEgg)
+        XCTAssertTrue(self.fridge.isEmpty, "")
         
-        XCTAssertFalse(Fridge.sharedInstance.isEmpty, "")
+        self.fridge.addIngredient(self.oneEgg)
         
-        Fridge.sharedInstance.removeIngredient(self.oneEgg)
+        XCTAssertFalse(self.fridge.isEmpty, "")
         
-        XCTAssertTrue(Fridge.sharedInstance.isEmpty, "")
+        self.fridge.removeIngredient(self.oneEgg)
         
-        XCTAssertFalse(Fridge.sharedInstance.removeIngredient(self.twoPiecesOfBacon), "")
+        XCTAssertTrue(self.fridge.isEmpty, "")
         
-        Fridge.sharedInstance.addIngredient(self.onePieceOfBacon)
+        XCTAssertFalse(self.fridge.removeIngredient(self.twoPiecesOfBacon), "")
         
-        XCTAssertFalse(Fridge.sharedInstance.removeIngredient(self.twoPiecesOfBacon), "")
+        self.fridge.addIngredient(self.onePieceOfBacon)
         
-        XCTAssertTrue(Fridge.sharedInstance.ingredients.contains(self.onePieceOfBacon), "")
+        XCTAssertFalse(self.fridge.removeIngredient(self.twoPiecesOfBacon), "")
         
-        Fridge.sharedInstance.emptyFridge()
+        XCTAssertTrue(self.fridge.ingredients.contains(self.onePieceOfBacon), "")
         
-        XCTAssertTrue(Fridge.sharedInstance.isEmpty, "")
+        self.fridge.emptyFridge()
         
-        Fridge.sharedInstance.addIngredient(self.onePieceOfBacon)
-        Fridge.sharedInstance.addIngredient(self.twoPiecesOfBacon)
+        XCTAssertTrue(self.fridge.isEmpty, "")
         
-        XCTAssertTrue(Fridge.sharedInstance.ingredients.contains(self.threePiecesOfBacon), "")
+        self.fridge.addIngredient(self.onePieceOfBacon)
+        self.fridge.addIngredient(self.twoPiecesOfBacon)
+        
+        XCTAssertTrue(self.fridge.ingredients.contains(self.threePiecesOfBacon), "")
 
-        Fridge.sharedInstance.emptyFridge()
+        self.fridge.emptyFridge()
         
-        XCTAssertTrue(Fridge.sharedInstance.isEmpty, "")
+        XCTAssertTrue(self.fridge.isEmpty, "")
         
-        Fridge.sharedInstance.addIngredient(self.threePiecesOfBacon)
-        Fridge.sharedInstance.removeIngredient(self.twoPiecesOfBacon)
+        self.fridge.addIngredient(self.threePiecesOfBacon)
+        self.fridge.removeIngredient(self.twoPiecesOfBacon)
         
-        XCTAssertTrue(Fridge.sharedInstance.ingredients.contains(self.onePieceOfBacon), "")
+        XCTAssertTrue(self.fridge.ingredients.contains(self.onePieceOfBacon), "")
+    }
+    */
+    
+    func testRemoveFromFridge()
+    {
+        self.fridge.emptyFridge()
+        
+        XCTAssertFalse(self.fridge.removeIngredient(self.oneEgg),
+            "The ingredient \(self.oneEgg) could unexpectedly be removed from the fridge.")
+        
+        self.fridge.addIngredient(self.oneEgg)
+        
+        XCTAssertTrue(self.fridge.removeIngredient(self.oneEgg),
+            "The ingredient \(self.oneEgg) could unexpectedly not be removed from the fridge.")
+        
+        XCTAssertTrue(self.fridge.isEmpty,
+            "The fridge is unexpectedly not empty.")
+        
+        self.fridge.addIngredient(self.onePieceOfBacon)
+        self.fridge.addIngredient(self.onePieceOfBacon)
+        
+        XCTAssertTrue(self.fridge.removeIngredient(self.twoPiecesOfBacon),
+            "The ingredient \(self.twoPiecesOfBacon) could unexpectedly not be removed from the fridge")
+        
+        XCTAssertTrue(self.fridge.isEmpty,
+            "The fridge is unexpectedly not empty.")
+    }
+    
+    func testAddToFridge()
+    {
+        self.fridge.emptyFridge()
+        
+        self.fridge.addIngredient(self.twoPiecesOfBacon)
+        
+        XCTAssertFalse(self.fridge.isEmpty,
+            "The fridge is unexpectedly empty.")
+        
+        XCTAssertEqual(self.fridge.ingredients.count, 1, "")
     }
 }

@@ -11,6 +11,7 @@
 		49628CCA1AED7432000D2D22 /* Fridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49628CC91AED7432000D2D22 /* Fridge.swift */; };
 		49628CCC1AED7A65000D2D22 /* Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49628CCB1AED7A65000D2D22 /* Quantity.swift */; };
 		49628CCE1AED7F62000D2D22 /* FridgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49628CCD1AED7F62000D2D22 /* FridgeTests.swift */; };
+		49D9872E1AEE726D0036F972 /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D9872D1AEE726D0036F972 /* Equipment.swift */; };
 		49E3FE4F1AED148800D7CC0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E3FE4E1AED148800D7CC0C /* AppDelegate.swift */; };
 		49E3FE511AED148800D7CC0C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E3FE501AED148800D7CC0C /* FirstViewController.swift */; };
 		49E3FE531AED148800D7CC0C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E3FE521AED148800D7CC0C /* SecondViewController.swift */; };
@@ -79,6 +80,7 @@
 		49628CC91AED7432000D2D22 /* Fridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fridge.swift; sourceTree = "<group>"; };
 		49628CCB1AED7A65000D2D22 /* Quantity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quantity.swift; sourceTree = "<group>"; };
 		49628CCD1AED7F62000D2D22 /* FridgeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FridgeTests.swift; sourceTree = "<group>"; };
+		49D9872D1AEE726D0036F972 /* Equipment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Equipment.swift; sourceTree = "<group>"; };
 		49E3FE491AED148800D7CC0C /* Sombrero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sombrero.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E3FE4D1AED148800D7CC0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49E3FE4E1AED148800D7CC0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -237,12 +239,13 @@
 		49E3FE951AED14ED00D7CC0C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				49E3FE961AED150A00D7CC0C /* Recipe.swift */,
-				49E3FE9E1AED33D600D7CC0C /* Ingredient.swift */,
 				49E3FE981AED153000D7CC0C /* Product.swift */,
+				49E3FE9E1AED33D600D7CC0C /* Ingredient.swift */,
+				49D9872D1AEE726D0036F972 /* Equipment.swift */,
+				49628CCB1AED7A65000D2D22 /* Quantity.swift */,
+				49E3FE961AED150A00D7CC0C /* Recipe.swift */,
 				49628CC71AED720B000D2D22 /* ShoppingList.swift */,
 				49628CC91AED7432000D2D22 /* Fridge.swift */,
-				49628CCB1AED7A65000D2D22 /* Quantity.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				49E3FE971AED150A00D7CC0C /* Recipe.swift in Sources */,
 				49628CC81AED720B000D2D22 /* ShoppingList.swift in Sources */,
 				49E3FE991AED153000D7CC0C /* Product.swift in Sources */,
+				49D9872E1AEE726D0036F972 /* Equipment.swift in Sources */,
 				49E3FE9F1AED33D600D7CC0C /* Ingredient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

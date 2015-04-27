@@ -25,10 +25,15 @@ class RecipeTests: XCTestCase
         let twoPiecesOfBacon = Ingredient(product: bacon, quantity: Quantity(amount: 2.0, type: .None))
         
         self.boiledEgg = Recipe(
+            name: "Boiled Egg",
             recipes: nil,
+            equipment: [.Pan],
             ingredients: oneEgg)
         
-        self.friedEgg = Recipe(recipes: nil,
+        self.friedEgg = Recipe(
+            name: "Fried Egg",
+            recipes: nil,
+            equipment: [.FryingPan],
             ingredients: oneEgg, twoPiecesOfBacon)
     }
     
@@ -39,7 +44,18 @@ class RecipeTests: XCTestCase
     
     func testVegetarian()
     {
-        XCTAssertTrue(self.boiledEgg.vegetarian, "")
-        XCTAssertFalse(self.friedEgg.vegetarian, "")
+        XCTAssertTrue(self.boiledEgg.isVegetarian,
+            "The recipe \(self.boiledEgg) was unexpectedly not vegetarian.")
+        
+        XCTAssertFalse(self.friedEgg.isVegetarian,
+            "The recipe \(self.friedEgg) was unexpectedly vegetarian")
+    }
+    
+    func testAlcholic()
+    {
+        XCTAssertFalse(self.boiledEgg.isAlcoholic,
+            "The recipe \(self.boiledEgg) was unexpectedly alcoholic.")
+        XCTAssertFalse(self.friedEgg.isAlcoholic,
+            "The recipe \(self.friedEgg) was unexpectedly alcoholic.")
     }
 }

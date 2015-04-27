@@ -8,6 +8,8 @@
 
 import Foundation
 
+// MARK: - Product
+
 /// Holds a product.
 public class Product
 {
@@ -184,6 +186,7 @@ public class Product
     }
 }
 
+// MARK: - Product extension
 extension Product
 {
     /// A Boolean value that determines if the product is vegetarian.
@@ -233,11 +236,19 @@ extension Product
     {
         return self.types.contains(.Alcohol)
     }
+    
+    /// A Boolean value that determines if the product is available in the fridge.
+    public var inFridge: Bool
+    {
+        // TODO: Logic
+        return true
+    }
 }
 
 // MARK: - Hashable
 extension Product: Hashable
 {
+    /// The hash value.
     public var hashValue: Int
     {
         return name.hashValue
@@ -249,19 +260,41 @@ public func ==(lhs: Product, rhs: Product) -> Bool
     return lhs.name == rhs.name
 }
 
-/// Holds the type of product.
-public enum ProductType
+// MARK: - Printable
+extension Product: Printable
 {
-    case Vegetarian
-    case Meat
-    case Fish
-    case Dairy
+    /// A textual representation of `self`.
+    public var description: String
+    {
+        return self.name
+    }
+}
+
+// MARK: - ProductType enum
+
+/// Holds the type of product.
+public enum ProductType: String
+{
+    case Vegetarian = "Vegetarian"
+    case Meat = "Meat"
+    case Fish = "Fish"
+    case Dairy = "Dairy"
     
-    case Fruit
-    case Vegetable
+    case Fruit = "Fruit"
+    case Vegetable = "a Vegetable"
     
-    case Beverage
-    case Alcohol
+    case Beverage = "a Beverage"
+    case Alcohol = "Alcohol"
     
-    case Unknown
+    case Unknown = "Unknown"
+}
+
+// MARK: - Printable
+extension ProductType: Printable
+{
+    /// A textual representation of `self`.
+    public var description: String
+    {
+        return self.rawValue
+    }
 }
