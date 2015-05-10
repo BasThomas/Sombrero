@@ -21,6 +21,19 @@ public class Product
     
     /// The type of the product.
     private(set) public var types = Set<ProductType>()
+    {
+        didSet
+        {
+            if self.types.isEmpty
+            {
+                self.types.insert(.Unknown)
+            }
+            else if self.types.contains(.Unknown) && self.types.count > 1
+            {
+                self.types.remove(.Unknown)
+            }
+        }
+    }
     
     /**
         The designated initializer.
@@ -46,10 +59,7 @@ public class Product
             }
         }
         
-        if self.types.isEmpty
-        {
-            self.types.insert(.Unknown)
-        }
+        self.types.insert(.Unknown)
     }
     
     /**
@@ -61,11 +71,6 @@ public class Product
     */
     public func addType(type: ProductType) -> Bool
     {
-        if self.types.count == 1 && self.types.contains(.Unknown)
-        {
-            self.types.removeAll()
-        }
-        
         if !self.isMutualyExclusive(type)
         {
             self.types.insert(type)

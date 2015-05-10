@@ -91,17 +91,17 @@ public class Fridge
     }
     
     /**
-        Checks if the ingredient is in the fridge.
+        Checks if the product is in the fridge.
     
-        :param: ingredient The ingredient to check for.
+        :param: product The product to check for.
     
-        :returns: True if the ingredient was found, otherwise false.
+        :returns: True if the product was found, otherwise false.
     */
-    public func containsIngredient(ingredient: Ingredient) -> Bool
+    public func containsProduct(product: Product) -> Bool
     {
         for ing in self.ingredients
         {
-            if ing == ingredient
+            if ing.product == product
             {
                 return true
             }
@@ -124,6 +124,11 @@ public class Fridge
         
         if remove
         {
+            if !self.containsProduct(ingredient.product)
+            {
+                return false
+            }
+            
             updateIngredient = ingredient
         }
         else
@@ -153,9 +158,7 @@ public class Fridge
                 }
                 else if updatedQuantity == 0.0
                 {
-                    let tes = self.ingredients.remove(updateIngredient)
-                    
-                    println(tes)
+                    self.ingredients.remove(updateIngredient)
                     
                     return true
                 }

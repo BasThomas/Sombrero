@@ -72,6 +72,34 @@ extension Recipe
         
         return false
     }
+    
+    /**
+        Checks if the recipe contains the specified productType.
+        
+        :param: productType The ProductType to check for.
+    
+        :returns: True if the recipe contains the productType, false if not.
+    */
+    public func containsProductType(productType: ProductType) -> Bool
+    {
+        if let recipes = self.recipes
+        {
+            for recipe in recipes
+            {
+                if recipe.containsProductType(productType)
+                {
+                    return true
+                }
+            }
+        }
+        
+        for ingredient in self.ingredients
+        {
+            return ingredient.product.types.contains(productType)
+        }
+        
+        return false
+    }
 }
 
 // MARK: - Hashable

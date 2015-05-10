@@ -113,6 +113,7 @@ class FridgeTests: XCTestCase
         XCTAssertFalse(self.fridge.isEmpty,
             "The fridge is unexpectedly empty.")
         
-        XCTAssertEqual(self.fridge.ingredients.count, 1, "")
+        XCTAssertEqual(self.fridge.ingredients.count, 1,
+            "The fridge unexpectedly contains more than one ingredient.")
     }
 }
