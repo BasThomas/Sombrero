@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		491A707D1B18F36D008DA6B6 /* Int+Counting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491A707C1B18F36D008DA6B6 /* Int+Counting.swift */; };
 		49628CC81AED720B000D2D22 /* ShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49628CC71AED720B000D2D22 /* ShoppingList.swift */; };
 		49628CCA1AED7432000D2D22 /* Fridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49628CC91AED7432000D2D22 /* Fridge.swift */; };
 		49628CCC1AED7A65000D2D22 /* Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49628CCB1AED7A65000D2D22 /* Quantity.swift */; };
@@ -76,6 +77,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		491A707C1B18F36D008DA6B6 /* Int+Counting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Counting.swift"; sourceTree = "<group>"; };
 		49628CC71AED720B000D2D22 /* ShoppingList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingList.swift; sourceTree = "<group>"; };
 		49628CC91AED7432000D2D22 /* Fridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fridge.swift; sourceTree = "<group>"; };
 		49628CCB1AED7A65000D2D22 /* Quantity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quantity.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				49E3FE951AED14ED00D7CC0C /* Model */,
 				49E3FE791AED14DD00D7CC0C /* SombreroKit.h */,
 				49E3FE771AED14DD00D7CC0C /* Supporting Files */,
+				491A707C1B18F36D008DA6B6 /* Int+Counting.swift */,
 			);
 			path = SombreroKit;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 			files = (
 				49628CCC1AED7A65000D2D22 /* Quantity.swift in Sources */,
 				49628CCA1AED7432000D2D22 /* Fridge.swift in Sources */,
+				491A707D1B18F36D008DA6B6 /* Int+Counting.swift in Sources */,
 				49E3FE971AED150A00D7CC0C /* Recipe.swift in Sources */,
 				49628CC81AED720B000D2D22 /* ShoppingList.swift in Sources */,
 				49E3FE991AED153000D7CC0C /* Product.swift in Sources */,

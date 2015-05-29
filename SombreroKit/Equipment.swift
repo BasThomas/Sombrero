@@ -11,8 +11,8 @@ import Foundation
 // MARK: - Equipment enum
 
 /// Holds equipment.
-public enum Equipment: String
-{
+public enum Equipment: String {
+    
     case Oven = "oven"
     case Microwave = "microwave"
     case Pan = "pan"
@@ -27,11 +27,10 @@ public enum Equipment: String
 }
 
 // MARK: - Printable
-extension Equipment: Printable
-{
+extension Equipment: Printable {
+    
     /// A textual representation of `self`.
-    public var description: String
-    {
+    public var description: String {
         return self.rawValue
     }
 }

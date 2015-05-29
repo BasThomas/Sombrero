@@ -11,8 +11,8 @@ import Foundation
 // MARK: - Fridge
 
 /// Holds a fridge.
-public class Fridge
-{
+public class Fridge {
+    
     /// The ingredients in the fridge.
     private(set) public var ingredients = Set<Ingredient>()
     
@@ -24,10 +24,8 @@ public class Fridge
     
         :param: shoppingList The shopping list to add.
     */
-    public func addShoppingList(shoppingList: ShoppingList)
-    {
-        for ingredient in shoppingList
-        {
+    public func addShoppingList(shoppingList: ShoppingList) {
+        for ingredient in shoppingList {
             self.addIngredient(ingredient)
         }
     }
@@ -37,8 +35,7 @@ public class Fridge
         
         :param: ingredient The ingredient to add.
     */
-    public func addIngredient(ingredient: Ingredient)
-    {
+    public func addIngredient(ingredient: Ingredient) {
         self.updateIngredient(ingredient)
     }
     
@@ -49,8 +46,7 @@ public class Fridge
     
         :returns: True if the ingredient could be removed, otherwise false.
     */
-    public func removeIngredient(ingredient: Ingredient) -> Bool
-    {
+    public func removeIngredient(ingredient: Ingredient) -> Bool {
         return self.updateIngredient(ingredient, remove: true)
     }
     
@@ -61,20 +57,15 @@ public class Fridge
     
         :returns: True if the recipe could be removed, otherwise false.
     */
-    public func removeRecipe(recipe: Recipe) -> Bool
-    {
-        for ingredient in recipe.ingredients
-        {
-            if !self.removeIngredient(ingredient)
-            {
+    public func removeRecipe(recipe: Recipe) -> Bool {
+        for ingredient in recipe.ingredients {
+            if !self.removeIngredient(ingredient) {
                 return false
             }
         }
         
-        if let subRecipes = recipe.recipes
-        {
-            for recipe in subRecipes
-            {
+        if let subRecipes = recipe.recipes {
+            for recipe in subRecipes {
                 self.removeRecipe(recipe)
             }
         }
@@ -85,8 +76,7 @@ public class Fridge
     /**
         Empties the whole fridge.
     */
-    public func emptyFridge()
-    {
+    public func emptyFridge() {
         self.ingredients.removeAll()
     }
     
@@ -97,12 +87,9 @@ public class Fridge
     
         :returns: True if the product was found, otherwise false.
     */
-    public func containsProduct(product: Product) -> Bool
-    {
-        for ing in self.ingredients
-        {
-            if ing.product == product
-            {
+    public func containsProduct(product: Product) -> Bool {
+        for ing in self.ingredients {
+            if ing.product == product {
                 return true
             }
         }
@@ -118,25 +105,18 @@ public class Fridge
     
         :returns: True if the ingredient has been successfully updated, otherwise false.
     */
-    private func updateIngredient(ingredient: Ingredient, remove: Bool = false) -> Bool
-    {
+    private func updateIngredient(ingredient: Ingredient, remove: Bool = false) -> Bool {
         var updateIngredient: Ingredient?
         
-        if remove
-        {
-            if !self.containsProduct(ingredient.product)
-            {
+        if remove {
+            if !self.containsProduct(ingredient.product) {
                 return false
             }
             
             updateIngredient = ingredient
-        }
-        else
-        {
-            for availableIngredient in self.ingredients
-            {
-                if ingredient == availableIngredient
-                {
+        } else {
+            for availableIngredient in self.ingredients {
+                if ingredient == availableIngredient {
                     updateIngredient = availableIngredient
                     
                     break
@@ -144,27 +124,20 @@ public class Fridge
             }
         }
         
-        if let updateIngredient = updateIngredient
-        {
+        if let updateIngredient = updateIngredient {
             var updatedIngredient: Ingredient?
             
-            if remove
-            {
+            if remove {
                 let updatedQuantity = updateIngredient.quantity -= ingredient.quantity
                 
-                if updatedQuantity == nil
-                {
+                if updatedQuantity == nil {
                     return false
-                }
-                else if updatedQuantity == 0.0
-                {
+                } else if updatedQuantity == 0.0 {
                     self.ingredients.remove(updateIngredient)
                     
                     return true
                 }
-            }
-            else
-            {
+            } else {
                 updatedIngredient = updateIngredient
                 updatedIngredient!.quantity += ingredient.quantity
             }
@@ -182,11 +155,10 @@ public class Fridge
 }
 
 // MARK: - Fridge extension
-extension Fridge
-{
+extension Fridge {
+    
     /// A Boolean value that determines if the fridge is empty.
-    public var isEmpty: Bool
-    {
+    public var isEmpty: Bool {
         return self.ingredients.isEmpty
     }
 }

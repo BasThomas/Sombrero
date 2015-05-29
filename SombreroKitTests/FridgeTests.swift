@@ -9,8 +9,8 @@
 import XCTest
 import SombreroKit
 
-class FridgeTests: XCTestCase
-{
+class FridgeTests: XCTestCase {
+    
     let fridge = Fridge.sharedInstance
     
     var oneEgg: Ingredient!
@@ -18,8 +18,7 @@ class FridgeTests: XCTestCase
     var twoPiecesOfBacon: Ingredient!
     var threePiecesOfBacon: Ingredient!
     
-    override func setUp()
-    {
+    override func setUp() {
         super.setUp()
         
         let egg = Product(name: "egg", expires: nil, ofType: .Vegetarian, .Dairy)!
@@ -31,14 +30,12 @@ class FridgeTests: XCTestCase
         self.threePiecesOfBacon = Ingredient(product: bacon, quantity: Quantity(amount: 3.0, type: .None))
     }
     
-    override func tearDown()
-    {
+    override func tearDown() {
         super.tearDown()
     }
     
     /*
-    func testFridge()
-    {
+    func testFridge() {
         self.fridge.emptyFridge()
         
         XCTAssertTrue(self.fridge.isEmpty, "")
@@ -79,8 +76,7 @@ class FridgeTests: XCTestCase
     }
     */
     
-    func testRemoveFromFridge()
-    {
+    func testRemoveFromFridge() {
         self.fridge.emptyFridge()
         
         XCTAssertFalse(self.fridge.removeIngredient(self.oneEgg),
@@ -104,8 +100,7 @@ class FridgeTests: XCTestCase
             "The fridge is unexpectedly not empty.")
     }
     
-    func testAddToFridge()
-    {
+    func testAddToFridge() {
         self.fridge.emptyFridge()
         
         self.fridge.addIngredient(self.twoPiecesOfBacon)

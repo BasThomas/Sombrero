@@ -11,8 +11,8 @@ import Foundation
 // MARK: - Product
 
 /// Holds a product.
-public class Product
-{
+public class Product {
+    
     /// The name of the product.
     public var name: String
     
@@ -20,16 +20,11 @@ public class Product
     public var expirationDate: NSDate?
     
     /// The type of the product.
-    private(set) public var types = Set<ProductType>()
-    {
-        didSet
-        {
-            if self.types.isEmpty
-            {
+    private(set) public var types = Set<ProductType>() {
+        didSet {
+            if self.types.isEmpty {
                 self.types.insert(.Unknown)
-            }
-            else if self.types.contains(.Unknown) && self.types.count > 1
-            {
+            } else if self.types.contains(.Unknown) && self.types.count > 1 {
                 self.types.remove(.Unknown)
             }
         }
@@ -43,23 +38,21 @@ public class Product
     
         :returns: The product if the added types are valid, otherwise nil.
     */
-    public init?(name: String, expires expirationDate: NSDate? = nil, ofType types: ProductType?...)
-    {
+    public init?(name: String, expires expirationDate: NSDate? = nil, ofType types: ProductType?...) {
         self.name = name
         self.expirationDate = expirationDate
         
-        for type in types
-        {
-            if let productType = type
-            {
-                if !self.addType(productType)
-                {
+        for type in types {
+            if let productType = type {
+                if !self.addType(productType) {
                     return nil
                 }
             }
         }
         
-        self.types.insert(.Unknown)
+        if self.types.count.isZero {
+            self.types.insert(.Unknown)
+        }
     }
     
     /**
@@ -69,10 +62,8 @@ public class Product
     
         :returns: True if the type could be added, otherwise false.
     */
-    public func addType(type: ProductType) -> Bool
-    {
-        if !self.isMutualyExclusive(type)
-        {
+    public func addType(type: ProductType) -> Bool {
+        if !self.isMutualyExclusive(type) {
             self.types.insert(type)
             
             return true
@@ -88,8 +79,7 @@ public class Product
     
         :returns: True if the type could be removed, otherwise false.
     */
-    public func removeType(type: ProductType) -> Bool
-    {
+    public func removeType(type: ProductType) -> Bool {
         // TODO: Check if non-clashing mutual exclusives.
         return self.types.remove(type) != nil
     }
@@ -101,90 +91,80 @@ public class Product
     
         :returns: False if the type is not mutualy exclusive, otherwise true.
     */
-    private func isMutualyExclusive(type: ProductType) -> Bool
-    {
-        switch(type)
-        {
-            case .Vegetarian:
-                if self.types.contains(.Meat) ||
-                    self.types.contains(.Fish) ||
-                    self.types.contains(.Alcohol)
-                {
-                    return true
-                }
-            case .Meat:
-                if self.types.contains(.Vegetarian) ||
-                    self.types.contains(.Fish) ||
-                    self.types.contains(.Dairy) ||
-                    self.types.contains(.Fruit) ||
-                    self.types.contains(.Vegetable) ||
-                    self.types.contains(.Beverage) ||
-                    self.types.contains(.Alcohol)
-                {
-                    return true
-                }
-            case .Fish:
-                if self.types.contains(.Vegetarian) ||
-                    self.types.contains(.Meat) ||
-                    self.types.contains(.Dairy) ||
-                    self.types.contains(.Fruit) ||
-                    self.types.contains(.Vegetable) ||
-                    self.types.contains(.Beverage) ||
-                    self.types.contains(.Alcohol)
-                {
-                    return true
-                }
-            case .Dairy:
-                if self.types.contains(.Meat) ||
-                    self.types.contains(.Fish) ||
-                    self.types.contains(.Fruit) ||
-                    self.types.contains(.Vegetable) ||
-                    self.types.contains(.Alcohol)
-                {
-                    return true
-                }
-                
-            case .Fruit:
-                if self.types.contains(.Meat) ||
-                    self.types.contains(.Fish) ||
-                    self.types.contains(.Dairy) ||
-                    self.types.contains(.Vegetable) ||
-                    self.types.contains(.Beverage) ||
-                    self.types.contains(.Alcohol)
-                {
-                    return true
-                }
-            case .Vegetable:
-                if self.types.contains(.Meat) ||
-                    self.types.contains(.Fish) ||
-                    self.types.contains(.Dairy) ||
-                    self.types.contains(.Fruit) ||
-                    self.types.contains(.Beverage) ||
-                    self.types.contains(.Alcohol)
-                {
-                    return true
-                }
-                
-            case .Beverage:
-                if self.types.contains(.Meat) ||
-                    self.types.contains(.Fish) ||
-                    self.types.contains(.Fruit) ||
-                    self.types.contains(.Vegetable)
-                {
-                    return true
-                }
-            case .Alcohol:
-                if self.types.contains(.Meat) ||
-                    self.types.contains(.Fish) ||
-                    self.types.contains(.Dairy) ||
-                    self.types.contains(.Fruit) ||
-                    self.types.contains(.Vegetable)
-                {
-                    return true
-                }
+    private func isMutualyExclusive(type: ProductType) -> Bool {
+        switch type {
+        case .Vegetarian:
+            if self.types.contains(.Meat) ||
+                self.types.contains(.Fish) ||
+                self.types.contains(.Alcohol) {
+                return true
+            }
+        case .Meat:
+            if self.types.contains(.Vegetarian) ||
+                self.types.contains(.Fish) ||
+                self.types.contains(.Dairy) ||
+                self.types.contains(.Fruit) ||
+                self.types.contains(.Vegetable) ||
+                self.types.contains(.Beverage) ||
+                self.types.contains(.Alcohol) {
+                return true
+            }
+        case .Fish:
+            if self.types.contains(.Vegetarian) ||
+                self.types.contains(.Meat) ||
+                self.types.contains(.Dairy) ||
+                self.types.contains(.Fruit) ||
+                self.types.contains(.Vegetable) ||
+                self.types.contains(.Beverage) ||
+                self.types.contains(.Alcohol) {
+                return true
+            }
+        case .Dairy:
+            if self.types.contains(.Meat) ||
+                self.types.contains(.Fish) ||
+                self.types.contains(.Fruit) ||
+                self.types.contains(.Vegetable) ||
+                self.types.contains(.Alcohol) {
+                return true
+            }
             
-            case .Unknown:
-                return false
+        case .Fruit:
+            if self.types.contains(.Meat) ||
+                self.types.contains(.Fish) ||
+                self.types.contains(.Dairy) ||
+                self.types.contains(.Vegetable) ||
+                self.types.contains(.Beverage) ||
+                self.types.contains(.Alcohol) {
+                return true
+            }
+        case .Vegetable:
+            if self.types.contains(.Meat) ||
+                self.types.contains(.Fish) ||
+                self.types.contains(.Dairy) ||
+                self.types.contains(.Fruit) ||
+                self.types.contains(.Beverage) ||
+                self.types.contains(.Alcohol) {
+                return true
+            }
+            
+        case .Beverage:
+            if self.types.contains(.Meat) ||
+                self.types.contains(.Fish) ||
+                self.types.contains(.Fruit) ||
+                self.types.contains(.Vegetable) {
+                return true
+            }
+        case .Alcohol:
+            if self.types.contains(.Meat) ||
+                self.types.contains(.Fish) ||
+                self.types.contains(.Dairy) ||
+                self.types.contains(.Fruit) ||
+                self.types.contains(.Vegetable) {
+                return true
+            }
+        
+        case .Unknown:
+            return false
         }
         
         return false
@@ -192,85 +172,73 @@ public class Product
 }
 
 // MARK: - Product extension
-extension Product
-{
+extension Product {
+    
     /// A Boolean value that determines if the product is vegetarian.
-    public var isVegetarian: Bool
-    {
+    public var isVegetarian: Bool {
         return self.types.contains(.Vegetarian)
     }
     
     /// A Boolean value that determines if the product is meat.
-    public var isMeat: Bool
-    {
+    public var isMeat: Bool {
         return self.types.contains(.Meat)
     }
     
     /// A Boolean value that determines if the product is fish.
-    public var isFish: Bool
-    {
+    public var isFish: Bool {
         return self.types.contains(.Fish)
     }
     
     /// A Boolean value that determines if the product is dairy.
-    public var isDairy: Bool
-    {
+    public var isDairy: Bool {
         return self.types.contains(.Dairy)
     }
     
     /// A Boolean value that determines if the product is a fruit.
-    public var isFruit: Bool
-    {
+    public var isFruit: Bool {
         return self.types.contains(.Fruit)
     }
     
     /// A Boolean value that determines if the product is a vegetable.
-    public var isVegetable: Bool
-    {
+    public var isVegetable: Bool {
         return self.types.contains(.Vegetable)
     }
     
     /// A Boolean value that determines if the product is a drink.
-    public var isBeverage: Bool
-    {
+    public var isBeverage: Bool {
         return self.types.contains(.Beverage)
     }
     
     /// A Boolean value that determines if the product is alcoholic.
-    public var isAlcoholic: Bool
-    {
+    public var isAlcoholic: Bool {
         return self.types.contains(.Alcohol)
     }
     
     /// A Boolean value that determines if the product is available in the fridge.
-    public var inFridge: Bool
-    {
+    public var isAvailable: Bool {
         // TODO: Logic
         return true
     }
 }
 
 // MARK: - Hashable
-extension Product: Hashable
-{
+extension Product: Hashable {
+    
     /// The hash value.
-    public var hashValue: Int
-    {
+    public var hashValue: Int {
         return name.hashValue
     }
 }
 
-public func ==(lhs: Product, rhs: Product) -> Bool
-{
+public func ==(lhs: Product, rhs: Product) -> Bool {
     return lhs.name == rhs.name
 }
 
 // MARK: - Printable
-extension Product: Printable
-{
+extension Product: Printable {
+    
     /// A textual representation of `self`.
-    public var description: String
-    {
+    public var description: String {
         return self.name
     }
 }
@@ -278,8 +246,8 @@ extension Product: Printable
 // MARK: - ProductType enum
 
 /// Holds the type of product.
-public enum ProductType: String
-{
+public enum ProductType: String {
+    
     case Vegetarian = "Vegetarian"
     case Meat = "Meat"
     case Fish = "Fish"
@@ -295,11 +263,10 @@ public enum ProductType: String
 }
 
 // MARK: - Printable
-extension ProductType: Printable
-{
+extension ProductType: Printable {
+    
     /// A textual representation of `self`.
-    public var description: String
-    {
+    public var description: String {
         return self.rawValue
     }
 }

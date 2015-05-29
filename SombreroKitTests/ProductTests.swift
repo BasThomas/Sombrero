@@ -9,8 +9,8 @@
 import XCTest
 import SombreroKit
 
-class ProductTests: XCTestCase
-{
+class ProductTests: XCTestCase {
+    
     var unknownProduct: Product!
     
     var apple: Product!
@@ -33,8 +33,7 @@ class ProductTests: XCTestCase
     
     var validProduct1: Product?
     
-    override func setUp()
-    {
+    override func setUp() {
         super.setUp()
         
         self.unknownProduct = Product(name: "Unknown")
@@ -60,13 +59,11 @@ class ProductTests: XCTestCase
         self.validProduct1 = Product(name: "validProduct1", expires: nil, ofType: .Fruit, .Vegetarian)
     }
     
-    override func tearDown()
-    {
+    override func tearDown() {
         super.tearDown()
     }
     
-    func testInvalid()
-    {
+    func testInvalid() {
         XCTAssertNil(self.invalidProduct1,
             "The product \(self.invalidProduct1) was unexpectedly not nil")
         XCTAssertNil(self.invalidProduct2,
@@ -80,13 +77,16 @@ class ProductTests: XCTestCase
             "The product \(self.validProduct1) was unexpectedly nil")
     }
     
-    func testUnknown()
-    {
+    func testUnknown() {
         XCTAssertTrue(self.unknownProduct.types.contains(.Unknown),
             "The product \(self.unknownProduct) unexpectedly not contained the type \(ProductType.Unknown)")
         
         XCTAssertFalse(self.apple.types.contains(.Unknown),
             "The product \(self.apple) unexpectedly contained the type \(ProductType.Unknown)")
+        for type in self.apple.types {
+            println(type)
+        }
+        
         XCTAssertFalse(self.steak.types.contains(.Unknown),
             "The product \(self.steak) unexpectedly contained the type \(ProductType.Unknown)")
         XCTAssertFalse(self.egg.types.contains(.Unknown),
@@ -111,8 +111,7 @@ class ProductTests: XCTestCase
         "The product \(self.peas) unexpectedly contained the type \(ProductType.Unknown)")
     }
     
-    func testVegetarian()
-    {
+    func testVegetarian() {
         XCTAssertTrue(self.apple.isVegetarian,
             "The product \(self.apple) was unexpectedly not \(ProductType.Vegetarian)")
         XCTAssertTrue(self.egg.isVegetarian,
@@ -142,8 +141,7 @@ class ProductTests: XCTestCase
             "The product \(self.salmon) was unexpectedly \(ProductType.Vegetarian)")
     }
     
-    func testMeat()
-    {
+    func testMeat() {
         XCTAssertTrue(self.steak.isMeat,
             "The product \(self.steak) was unexpectedly not \(ProductType.Meat)")
         XCTAssertTrue(self.chicken.isMeat,
@@ -173,8 +171,7 @@ class ProductTests: XCTestCase
             "The product \(self.peas) was unexpectedly \(ProductType.Meat)")
     }
     
-    func testFish()
-    {
+    func testFish() {
         XCTAssertTrue(self.salmon.isFish,
             "The product \(self.salmon) was unexpectedly not \(ProductType.Fish)")
         
@@ -204,8 +201,7 @@ class ProductTests: XCTestCase
             "The product \(self.peas) was unexpectedly \(ProductType.Fish)")
     }
     
-    func testDairy()
-    {
+    func testDairy() {
         XCTAssertTrue(self.egg.isDairy,
             "The product \(self.egg) was unexpectedly not \(ProductType.Dairy)")
         XCTAssertTrue(self.cheese.isDairy,
@@ -235,8 +231,7 @@ class ProductTests: XCTestCase
             "The product \(self.peas) was unexpectedly \(ProductType.Dairy)")
     }
     
-    func testFruit()
-    {
+    func testFruit() {
         XCTAssertTrue(self.apple.isFruit,
             "The product \(self.apple) was unexpectedly not \(ProductType.Fruit)")
         XCTAssertTrue(self.pineapple.isFruit,
@@ -266,8 +261,7 @@ class ProductTests: XCTestCase
             "The product \(self.peas) was unexpectedly \(ProductType.Fruit)")
     }
     
-    func testVegetable()
-    {
+    func testVegetable() {
         XCTAssertTrue(self.peas.isVegetable,
             "The product \(self.peas) was unexpectedly not \(ProductType.Vegetable)")
         
@@ -297,8 +291,7 @@ class ProductTests: XCTestCase
             "The product \(self.salmon) was unexpectedly \(ProductType.Vegetable)")
     }
     
-    func testBeverage()
-    {
+    func testBeverage() {
         XCTAssertTrue(self.milk.isBeverage,
             "The product \(self.milk) was unexpectedly not \(ProductType.Beverage)")
         XCTAssertTrue(self.coke.isBeverage,

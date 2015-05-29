@@ -11,8 +11,8 @@ import Foundation
 // MARK: - Recipe
 
 /// Holds a recipe.
-public class Recipe
-{
+public class Recipe {
+    
     /// The name of the recipe
     public var name: String
     
@@ -33,8 +33,7 @@ public class Recipe
         :param: equipment Optional equipment needed for this recipe.
         :param: ingredients Ingredients needed in this recipe.
     */
-    public init(name: String, recipes: [Recipe]?, equipment: [Equipment]?, ingredients: Ingredient...)
-    {
+    public init(name: String, recipes: [Recipe]?, equipment: [Equipment]?, ingredients: Ingredient...) {
         self.name = name
         self.recipes = recipes
         
@@ -43,15 +42,12 @@ public class Recipe
 }
 
 // MARK: - Recipe extension
-extension Recipe
-{
+extension Recipe {
+    
     /// A Boolean value that determines if the recipe is vegetarian.
-    public var isVegetarian: Bool
-    {
-        for ingredient in self.ingredients
-        {
-            if !ingredient.product.isVegetarian
-            {
+    public var isVegetarian: Bool {
+        for ingredient in self.ingredients {
+            if !ingredient.product.isVegetarian {
                 return false
             }
         }
@@ -60,12 +56,9 @@ extension Recipe
     }
     
     /// A Boolean value that determines if the recipe is alcoholic.
-    public var isAlcoholic: Bool
-    {
-        for ingredient in self.ingredients
-        {
-            if ingredient.product.isAlcoholic
-            {
+    public var isAlcoholic: Bool {
+        for ingredient in self.ingredients {
+            if ingredient.product.isAlcoholic {
                 return true
             }
         }
@@ -80,21 +73,16 @@ extension Recipe
     
         :returns: True if the recipe contains the productType, false if not.
     */
-    public func containsProductType(productType: ProductType) -> Bool
-    {
-        if let recipes = self.recipes
-        {
-            for recipe in recipes
-            {
-                if recipe.containsProductType(productType)
-                {
+    public func containsProductType(productType: ProductType) -> Bool {
+        if let recipes = self.recipes {
+            for recipe in recipes {
+                if recipe.containsProductType(productType) {
                     return true
                 }
             }
         }
         
-        for ingredient in self.ingredients
-        {
+        for ingredient in self.ingredients {
             return ingredient.product.types.contains(productType)
         }
         
@@ -103,26 +91,23 @@ extension Recipe
 }
 
 // MARK: - Hashable
-extension Recipe: Hashable
-{
+extension Recipe: Hashable {
+    
     /// The hash value.
-    public var hashValue: Int
-    {
+    public var hashValue: Int {
         return self.name.hashValue
     }
 }
 
-public func ==(lhs: Recipe, rhs: Recipe) -> Bool
-{
+public func ==(lhs: Recipe, rhs: Recipe) -> Bool {
     return lhs.name == rhs.name
 }
 
 // MARK: - Printable
-extension Recipe: Printable
-{
+extension Recipe: Printable {
+    
     /// A textual representation of `self`.
-    public var description: String
-    {
+    public var description: String {
         return self.name
     }
 }

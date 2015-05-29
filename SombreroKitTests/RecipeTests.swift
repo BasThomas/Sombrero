@@ -9,13 +9,12 @@
 import XCTest
 import SombreroKit
 
-class RecipeTests: XCTestCase
-{
+class RecipeTests: XCTestCase {
+    
     var boiledEgg: Recipe!
     var friedEgg: Recipe!
     
-    override func setUp()
-    {
+    override func setUp() {
         super.setUp()
         
         let egg = Product(name: "egg", expires: nil, ofType: .Vegetarian, .Dairy)!
@@ -37,13 +36,11 @@ class RecipeTests: XCTestCase
             ingredients: oneEgg, twoPiecesOfBacon)
     }
     
-    override func tearDown()
-    {
+    override func tearDown() {
         super.tearDown()
     }
     
-    func testVegetarian()
-    {
+    func testVegetarian() {
         XCTAssertTrue(self.boiledEgg.isVegetarian,
             "The recipe \(self.boiledEgg) was unexpectedly not vegetarian.")
         
@@ -51,8 +48,7 @@ class RecipeTests: XCTestCase
             "The recipe \(self.friedEgg) was unexpectedly vegetarian")
     }
     
-    func testAlcholic()
-    {
+    func testAlcholic() {
         XCTAssertFalse(self.boiledEgg.isAlcoholic,
             "The recipe \(self.boiledEgg) was unexpectedly alcoholic.")
         XCTAssertFalse(self.friedEgg.isAlcoholic,
